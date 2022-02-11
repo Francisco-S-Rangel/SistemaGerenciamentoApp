@@ -1,0 +1,85 @@
+<div class="row">
+
+  <!--Atualizar os dados do Departamento-->
+  <div class="col-sm-6" *ngIf="departamentoSelecionado">
+    <div class="row">
+      <div class="mr-auto">
+        <h2>Código.Departamento: <span class="idd">{{departamentoSelecionado.id}}</span></h2>
+      </div>
+      <div class="aux">
+        <button class="btn btn-danger" style="cursor:pointer;" (click)="voltar()">Fechar</button>
+      </div>
+    </div>
+
+    <form [formGroup]="departamentoForm" >
+      <div class="form-group">
+        <label for="formGroupExampleInput">Nome: </label>
+        <input type="text" class="form-control" formControlName="nome">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Sigla: </label>
+        <input type="text" class="form-control" formControlName="sigla">
+      </div>
+      <div class="form-group">
+        <hr>
+        <button type="submit" class="btn btn-success" [disabled]="!departamentoForm.valid"  (click)="departamentoSubmit()" (click)="voltar()">Salvar</button>
+      </div>
+    </form>
+  </div>
+  <!--Criar Departamento-->
+  <div class="col-sm-12" *ngIf="cadastrobtn">
+    <div class="row">
+      <div class="mr-auto">
+        <h2>Criar Departamento</h2>
+      </div>
+      <div class="aux-2">
+        <button class="btn btn-danger" style="cursor:pointer;" (click)="fecharCadastro()">Fechar</button>
+      </div>
+    </div>
+
+    <form [formGroup]="departamentoForm" (submit)="departamentoSubmit()">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Nome: </label>
+        <input type="text" class="form-control" formControlName="nome">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Sigla: </label>
+        <input type="text" class="form-control" formControlName="sigla">
+      </div>
+      <div class="form-group">
+        <hr>
+        <button class="btn btn-success" [disabled]="!departamentoForm.valid" (click)="departamentoNovo()"(click)="fecharCadastro()">Salvar</button>
+      </div>
+    </form>
+  </div>
+  <!--Tabela de departamento-->
+  <div *ngIf="!cadastrobtn" [ngClass]="{'col-sm-12': !departamentoSelecionado, 'col-sm-6': departamentoSelecionado}">
+    <h2>Departamentos</h2>
+    <button class="cadastrar" (click)="botaodecadastro()" *ngIf="!departamentoSelecionado">Cadastrar Departamento</button>
+    <button class="cadastrar" *ngIf="departamentoSelecionado">Cadastrar Departamento</button>
+    <table class="table table-hover">
+      <thead class="tab">
+        <tr>
+          <th scope="col">Info</th>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Sigla</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let departamento of departamentos">
+          <td scope="row"><button (click)="departamentoSelect(departamento)" class="btn btn-primary">Alterar</button></td>
+          <td>{{departamento.id}}</td>
+          <td>{{departamento.nome}}</td>
+          <td>{{departamento.sigla}}</td>
+          <td><div class='btn-group'>
+            <button class="btn btn-success"  [routerLink]="'funcionarios'">Funcionarios</button>
+            <button class="btn btn-danger" (click)="deletarDepartamento(departamento.id)">Deletar</button>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

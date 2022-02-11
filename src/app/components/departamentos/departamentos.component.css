@@ -1,0 +1,42 @@
+h2 {
+    margin-top: 3rem;
+    font-weight: bold;
+    color: black;
+}
+.table {
+    margin-top: 1rem;
+    background-color:  rgb(231, 229, 229);
+}
+.tab {
+    background-color: rgb(213, 213, 213);
+}
+.aux {
+    margin-top: 1rem;
+    margin-left: 34.5rem;
+}
+.aux-2 {
+    margin-top: 1rem;
+    margin-left: 77rem;
+}
+.add-color {
+    background-color: aliceblue;
+}
+.cadastrar {
+    margin-top: 2rem;
+    background-color:  rgb(213, 213, 213);
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 10px;
+}
+.cadastrar:hover{
+    color: #fff;
+    font-weight: 600;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.idd {
+    color: #0d6efd;
+}
